@@ -38,7 +38,15 @@ pipeline  {
             steps {
                 echo " ============== pushing image =================="
                 sh '''
-                docker push ryrevestn1k/ss_edup:latest
+                docker push ryrevestn1k/starwar:latest
+                '''
+            }
+        }
+        stage("docker run") {
+            steps {
+                echo " ============== running image =================="
+                sh '''
+                docker run -d --name starwarv.last -p 80:80 ryrevestn1k/starwars
                 '''
             }
         }
